@@ -62,7 +62,7 @@
    :PROPERTIES:
    :BEAMER_ENV: fullframe
    :END:
-#+ATTR_LATEX: :height 8cm :options page=1
+#+ATTR_LATEX: :width \textwidth :options page=1
 [[./source/avy-avatar-1.png]]
 
 
@@ -130,5 +130,57 @@
 
 
 * Swiper
+** Title
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+#+ATTR_LATEX: :width \textwidth :options page=1
+[[./source/swiper.png]]
+
+
+** Screenshot
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+
+#+ATTR_LATEX: :width \textwidth :options page=1
+[[./source/swiper_screenshot.png]]
+
+
 ** Within-buffer search
-** configuration
+** Configuration
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+   \tiny
+#+BEGIN_SRC elisp :eval no
+(use-package swiper
+  :commands (swiper
+             swiper-at-point)
+  :bind (("s-s" . swiper-at-point)
+         ("C-s-s" . swiper)
+         ;; Add bindings to isearch-mode
+         :map isearch-mode-map
+         ("s-s" . swiper-from-isearch))
+  :init
+  ;; Newly defined
+  (defun swiper-at-point ()
+    "Custom function to pick up a thing at a point for swiper
+
+If a selected region exists, it will be searched for by swiper
+If there is a symbol at the current point, its textual representation is
+searched. If there is no symbol, empty search box is started."
+    (interactive)
+    (swiper (selection-or-thing-at-point))))
+
+(defun selection-or-thing-at-point ()
+  (cond
+   ;; If there is selection use it
+   ((and transient-mark-mode mark-active
+         (not (eq (mark) (point))))
+    (buffer-substring-no-properties (mark) (point)))
+   ;; Otherwise, use symbol at point or empty
+   (t (format "%s"
+              (or (thing-at-point 'symbol)
+                  "")))))
+#+END_SRC
