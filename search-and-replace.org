@@ -1,41 +1,113 @@
 * Meta-data :noexport:
-  # http://orgmode.org/worg/exporters/beamer/tutorial.html
-  #+TITLE: My Search and Replacement Strategies @@latex:\\@@ avy, swiper, multiple-cursor, ag, and wgrep
-  #+AUTHOR:    Kazuki Yoshida
-  #+EMAIL:
-  #+DATE:
-  #+DESCRIPTION:
-  #+KEYWORDS:
-  #+OPTIONS: toc:nil
-  #+OPTIONS: H:2
-  #+OPTIONS: ^:{}
-  #+STARTUP: beamer
-  #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
-  #+LATEX_CLASS: beamer
-  #+LATEX_CLASS_OPTIONS: [dvipdfmx,bigger]
-  #+LATEX_HEADER: %% No navigation bar
-  #+LATEX_HEADER: \setbeamertemplate{navigation symbols}{}
-  #+LATEX_HEADER: %% Page number with current/total format
-  #+LATEX_HEADER: \setbeamerfont{page number in head/foot}{size=\footnotesize}
-  #+LATEX_HEADER: \setbeamertemplate{footline}[frame number]
-  #+LATEX_HEADER: \setbeamertemplate{frametitle}[default][center]
-  #+LATEX_HEADER: # With item labels
-  #+LATEX_HEADER: \setbeamertemplate{bibliography item}{\insertbiblabel}
-  #+LATEX_HEADER: # Without item labels
-  #+LATEX_HEADER: #\setbeamertemplate{bibliography item}{}
+# http://orgmode.org/worg/exporters/beamer/tutorial.html
+#+TITLE: My Search and Replacement Strategies @@latex:\\@@ avy, swiper, multiple-cursor, ag, and wgrep
+#+AUTHOR:    Kazuki Yoshida
+#+EMAIL:
+#+DATE:
+#+DESCRIPTION:
+#+KEYWORDS:
+#+OPTIONS: toc:nil
+#+OPTIONS: H:2
+#+OPTIONS: ^:{}
+#+STARTUP: beamer
+#+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+#+LATEX_CLASS: beamer
+#+LATEX_CLASS_OPTIONS: [dvipdfmx,bigger]
+#+LATEX_HEADER: %% No navigation bar
+#+LATEX_HEADER: \setbeamertemplate{navigation symbols}{}
+#+LATEX_HEADER: %% Page number with current/total format
+#+LATEX_HEADER: \setbeamerfont{page number in head/foot}{size=\footnotesize}
+#+LATEX_HEADER: \setbeamertemplate{footline}[frame number]
+#+LATEX_HEADER: \setbeamertemplate{frametitle}[default][center]
+#+LATEX_HEADER: %% With item labels
+#+LATEX_HEADER: \setbeamertemplate{bibliography item}{\insertbiblabel}
+#+LATEX_HEADER: %% Without item labels
+#+LATEX_HEADER: %% \setbeamertemplate{bibliography item}{}
+#+LATEX_HEADER: %% Code
+#+LATEX_HEADER: \usepackage{listings}
+#+LATEX_HEADER: \usepackage{courier}
+#+LATEX_HEADER: \lstset{basicstyle=\footnotesize\ttfamily, breaklines=true, frame=single}
+#+LATEX_HEADER: \usepackage[cache=false]{minted}
+#+LATEX_HEADER: \usemintedstyle{bw}
 
 # ############################################################################ #
 
+* Introduction
 ** Who am I?
 
+- Doctoral student at Harvard T.H. Chan School of Public Health (Epidemiology & Biostatistics).
+- emacs user since 2012.
+- Main use of emacs: =R= programming and \LaTeX.
+- Maintainer of [[https://github.com/kaz-yos/eval-in-repl][=eval-in-repl=]] and [[https://github.com/kaz-yos/reveal-in-osx-finder][=reveal-in-ox-finder=]] on [[https://melpa.org/#/][MELPA]].
+
+
 ** Packages Mentioned
-- avy:
-- swiper:
-- multiple-cursor:
-- ag:
-- wgrep:
+- avy: https://github.com/abo-abo/avy
+- swiper: https://github.com/abo-abo/swiper#swiper
+- multiple-cursor: https://github.com/magnars/multiple-cursors.el
+- ag: https://github.com/Wilfred/ag.el
+- wgrep: https://github.com/mhayashi1120/Emacs-wgrep
 
 
-** avy: Searching for cursor jump
+** Demonstration environment
+- MacBook Air (13-inch, Mid 2012)
+- macOS Sierra 10.12.6
+- emacs-plus 26.0.50
+=brew install emacs-plus --with-natural-title-bar --HEAD=
+- Beamer slides exported via =org-beamer= and =org-mode= 9.0.9
 
+
+* Avy
+** avy: One-key searching jump cursor
+
+- "Jump to things in Emacs tree-style"
+- Repo: https://github.com/abo-abo/avy
+- Video: https://www.youtube.com/watch?v=ziytRbASKeU
+- Main function: =M-x avy-goto-char=
+- Rationale
+  - Using =isearch= (=C-s=) is a classic way to make cursor movement more efficient.
+  -
+
+** avy: configuration
+   \tiny
+#+BEGIN_SRC elisp :eval no
+(use-package avy
+  :demand
+  :config
+  ;; Darken background.
+  (setq avy-background t)
+  ;; Highlight the first decision char with `avy-lead-face-0'.
+  ;; https://github.com/abo-abo/avy/wiki/defcustom#avy-highlight-first
+  (setq avy-highlight-first t)
+  ;; The default method of displaying the overlays.
+  ;; https://github.com/abo-abo/avy/wiki/defcustom#avy-style
+  (setq avy-style 'at-full)
+  ;; Keys to be used. Use a-z.
+  (setq avy-keys (loop for c from ?a to ?z collect c))
+  ;; Time out for *-timer functions
+  (setq avy-timeout-seconds 0.3)
+  ;;
+  ;; avy version of one-step activation
+  ;; http://d.hatena.ne.jp/rkworks/20120520/1337528737
+  ;; https://github.com/cjohansen/.emacs.d/commit/65efe88
+  (defun add-keys-to-avy (prefix c &optional mode)
+    (define-key global-map
+      (read-kbd-macro (concat prefix (string c)))
+      `(lambda ()
+         (interactive)
+         (funcall (cond
+                   ;; Word beginning
+                   ((eq ',mode 'word)  #'avy-goto-word-1)
+                   ;; Anywhere
+                   (t                  #'avy-goto-char))
+                  ,c))))
+  ;;
+  ;; Assing key bindings for all characters
+  ;; eg, M-s-x will activate (avy-goto-char ?x), ie, all occurrence of x
+  (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-" c))
+  ;; eg, A-s-x will activate (avy-goto-word-1 ?x), ie, all words starting with x
+  (loop for c from ?! to ?~ do (add-keys-to-avy "C-M-s-" c 'word)))
+#+END_SRC
+
+* Swiper
 ** swiper: Within-buffer search
