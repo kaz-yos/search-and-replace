@@ -56,6 +56,9 @@
 =brew install emacs-plus --with-natural-title-bar --HEAD=
 - Beamer slides exported via =org-beamer= and =org-mode= 9.0.9
 
+#+ATTR_LATEX: :height 3cm :options page=1
+[[./source/mac-us-english-keyboard_1024x1024.png]]
+
 
 * Avy
 ** Title
