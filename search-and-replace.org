@@ -58,17 +58,35 @@
 
 
 * Avy
-** avy: One-key searching jump cursor
+** Title
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+#+ATTR_LATEX: :height 8cm :options page=1
+[[./source/avy-avatar-1.png]]
+
+
+** Screenshot
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+
+#+ATTR_LATEX: :width \textwidth :options page=1
+[[./source/avy_screenshot.png]]
+
+
+** One-key searching jump cursor
 
 - "Jump to things in Emacs tree-style"
 - Repo: https://github.com/abo-abo/avy
 - Video: https://www.youtube.com/watch?v=ziytRbASKeU
 - Main function: =M-x avy-goto-char=
 - Rationale
-  - Using =isearch= (=C-s=) is a classic way to make cursor movement more efficient.
-  -
+  - Using =isearch= (=C-s=) is a classic way to make cursor movements more efficient.
+  - =avy= makes jumping to anywhere visible easier.
 
-** avy: configuration
+
+** Configuration
    :PROPERTIES:
    :BEAMER_ENV: fullframe
    :END:
@@ -91,9 +109,7 @@
   ;; Time out for *-timer functions
   (setq avy-timeout-seconds 0.3)
   ;;
-  ;; avy version of one-step activation
-  ;; http://d.hatena.ne.jp/rkworks/20120520/1337528737
-  ;; https://github.com/cjohansen/.emacs.d/commit/65efe88
+  ;; one-step activation https://github.com/cjohansen/.emacs.d/commit/65efe88
   (defun add-keys-to-avy (prefix c &optional mode)
     (define-key global-map
       (read-kbd-macro (concat prefix (string c)))
@@ -105,7 +121,6 @@
                    ;; Anywhere
                    (t                  #'avy-goto-char))
                   ,c))))
-  ;;
   ;; Assing key bindings for all characters
   ;; eg, M-s-x will activate (avy-goto-char ?x), ie, all occurrence of x
   (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-" c))
@@ -115,5 +130,5 @@
 
 
 * Swiper
-** swiper: Within-buffer search
-** swiper: configuration
+** Within-buffer search
+** configuration
