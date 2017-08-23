@@ -1,0 +1,34 @@
+* Meta-data :noexport:
+  # http://orgmode.org/worg/exporters/beamer/tutorial.html
+  #+TITLE: My Search and Replacement Strategies @@latex:\\@@ avy, swiper, multiple-cursor, ag, and wgrep
+  #+AUTHOR:    Kazuki Yoshida
+  #+EMAIL:
+  #+DATE:
+  #+DESCRIPTION:
+  #+KEYWORDS:
+  #+OPTIONS: toc:nil
+  #+OPTIONS: H:2
+  #+OPTIONS: ^:{}
+  #+STARTUP: beamer
+  #+COLUMNS: %40ITEM %10BEAMER_env(Env) %9BEAMER_envargs(Env Args) %4BEAMER_col(Col) %10BEAMER_extra(Extra)
+  #+LATEX_CLASS: beamer
+  #+LATEX_CLASS_OPTIONS: [dvipdfmx,bigger]
+  #+LATEX_HEADER: %% No navigation bar
+  #+LATEX_HEADER: \setbeamertemplate{navigation symbols}{}
+  #+LATEX_HEADER: %% Page number with current/total format
+  #+LATEX_HEADER: \setbeamerfont{page number in head/foot}{size=\footnotesize}
+  #+LATEX_HEADER: \setbeamertemplate{footline}[frame number]
+  #+LATEX_HEADER: \setbeamertemplate{frametitle}[default][center]
+  #+LATEX_HEADER: # With item labels
+  #+LATEX_HEADER: \setbeamertemplate{bibliography item}{\insertbiblabel}
+  #+LATEX_HEADER: # Without item labels
+  #+LATEX_HEADER: #\setbeamertemplate{bibliography item}{}
+
+# ############################################################################ #
+
+** Who am I?
+
+** Packages Mentioned
+- avy:
+- swiper
+- multiple-cursor
