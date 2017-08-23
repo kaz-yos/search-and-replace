@@ -28,7 +28,7 @@
 #+LATEX_HEADER: \usepackage{courier}
 #+LATEX_HEADER: \lstset{basicstyle=\footnotesize\ttfamily, breaklines=true, frame=single}
 #+LATEX_HEADER: \usepackage[cache=false]{minted}
-#+LATEX_HEADER: \usemintedstyle{bw}
+#+LATEX_HEADER: \usemintedstyle{emacs}
 
 # ############################################################################ #
 
@@ -69,6 +69,10 @@
   -
 
 ** avy: configuration
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+
    \tiny
 #+BEGIN_SRC elisp :eval no
 (use-package avy
@@ -109,5 +113,7 @@
   (loop for c from ?! to ?~ do (add-keys-to-avy "C-M-s-" c 'word)))
 #+END_SRC
 
+
 * Swiper
 ** swiper: Within-buffer search
+** swiper: configuration
