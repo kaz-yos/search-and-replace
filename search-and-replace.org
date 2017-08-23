@@ -30,5 +30,12 @@
 
 ** Packages Mentioned
 - avy:
-- swiper
-- multiple-cursor
+- swiper:
+- multiple-cursor:
+- ag:
+- wgrep:
+
+
+** avy: Searching for cursor jump
+
+** swiper: Within-buffer search
