@@ -294,16 +294,19 @@ searched. If there is no symbol, empty search box is started."
 
 ** What is it?
 
-- "Multiple cursors for emacs"
+- "Grep for a string in the current directory using ag"
 - Repo: https://github.com/abo-abo/swiper#counsel
 - Video: ?
-- Purpose: Multi-file search via =ag= (silver searcher)
+- Purpose: Multi-file search via =ag= (=brew install the_silver_searcher=)
 
 ** Example Workflow
 
-- =Meta-x counsel-ag= to call
+- =Meta-x counsel-ag= to call with an empty string for the current directory
+
+
 - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
 - =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing the results
+- Edit using =multiple-cursor=
 - =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=) to save the changes
 
 
