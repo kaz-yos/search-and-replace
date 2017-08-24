@@ -343,10 +343,15 @@ The directory is detected by projectile-project-root."
 - =Meta-x swiper=
 - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=)
 - =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=)
+- =multiple-cursor= can help here.
 - =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=)
 
 ** Summary: Multiple Files
-- =Meta-x counsel-ag= or =Meta-x counsel-rg= or =Meta-x counsel-git-grep=
+- Either one of
+  - =Meta-x counsel-ag=
+  - =Meta-x counsel-rg=
+  - =Meta-x counsel-git-grep=
 - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=)
 - =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=)
+- =multiple-cursor= can help here.
 - =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=)
