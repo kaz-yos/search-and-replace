@@ -299,11 +299,11 @@ searched. If there is no symbol, empty search box is started."
 - Video: ?
 - Purpose: Multi-file search via =ag= (=brew install the_silver_searcher=)
 
-=counsel-git-grep= is very similar except that the back end is =git=.
+=counsel-git-grep= is very similar except that the back end is =git=, and it is project-folder-aware.
 
 ** Example Workflow
 
-- =Meta-x counsel-ag= to call with an empty string for the current directory
+- =Meta-x counsel-ag= to call with an empty string for the current directory. The universal argument (=Ctrl-u= before invocation) make it ask for the directory.
 
 
 - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
@@ -311,6 +311,8 @@ searched. If there is no symbol, empty search box is started."
 - Edit using =multiple-cursor=
 - =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=) to save the changes
 
+
+I defined an enhanced function =counsel-ag-at-point=, which pick up the symbol at point or the selected region if available as the initial search term and is project-folder-aware.
 
 ** Configuration
    :PROPERTIES:
@@ -320,27 +322,17 @@ searched. If there is no symbol, empty search box is started."
 #+BEGIN_SRC elisp :eval no
 (use-package counsel
   :commands (counsel-ag
+             counsel-ag-at-point
              counsel-git-grep)
-  :bind (("s-q". counsel-git-grep-at-point)
-         ("C-s-q" . counsel-ag)
-         :map org-mode-map
-         ("s-z" . counsel-org-goto))
-  ;;
+  :bind (("s-q". counsel-ag-at-point)
+         ("C-s-q" . counsel-ag))
   :config
-  ;; Make counsel-ag default to
-  ;; https://github.com/abo-abo/swiper/issues/583
-  (defun counsel-ag-advice (args)
-    "Make counsel-ag aware of project root.
+  (defun counsel-ag-at-point ()
+    "counsel-ag with at-point and project root enhancement
 
-Modify INITIAL-DIRECTORY to projectile-project-root."
-    ;; (setcar CELL NEWCAR)
-    (setcar (nthcdr 1 args) (projectile-project-root)))
-  ;; (advice-add 'counsel-ag :filter-args #'counsel-ag-advice)
-  ;; (advice-remove 'counsel-ag #'counsel-ag-advice)
-  ;;
-  ;; https://github.com/abo-abo/swiper/issues/66
-  (defun counsel-git-grep-at-point ()
+The initial string is produced by selection-or-thing-at-point.
+The directory is detected by projectile-project-root."
     (interactive)
-    (counsel-git-grep nil
-                      (selection-or-thing-at-point))))
+    (counsel-ag (selection-or-thing-at-point)
+                (projectile-project-root))))
 #+END_SRC
