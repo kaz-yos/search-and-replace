@@ -48,6 +48,7 @@
 - swiper/counsel/ivy: https://github.com/abo-abo/swiper
 - multiple-cursor: https://github.com/magnars/multiple-cursors.el
 - ag: https://github.com/Wilfred/ag.el
+- rg: https://github.com/dajva/rg.el
 - wgrep: https://github.com/mhayashi1120/Emacs-wgrep
 
 
@@ -299,7 +300,7 @@ searched. If there is no symbol, empty search box is started."
 - Blog: https://sam217pa.github.io/2016/09/11/nuclear-power-editing-via-ivy-and-ag/
 - Purpose: Multi-file search via =ag= command (=brew install the_silver_searcher=) with optional editing.
 
-=counsel-rg= is essentially identical except for the use of =rg= command (=brew install ripgrep=). =counsel-git-grep= is very similar except that the back end is =git=, and it is project-folder-aware. =ag= in =ag.el= does not use the =ivy= live-filtering interface, but editing can work similarly.
+=counsel-rg= is essentially identical except for the use of =rg= command (=brew install ripgrep=). =counsel-git-grep= is very similar except that the back end is =git=, and it is project-folder-aware. [[https://github.com/Wilfred/ag.el][=ag.el=]] and [[https://github.com/dajva/rg.el][=rg.el=]] do not use the =ivy= live-filtering interface, but editing can work similarly.
 
 ** Example Workflow
 
