@@ -273,3 +273,69 @@ searched. If there is no symbol, empty search box is started."
          ("C-<" . mc/mark-previous-like-this)
          ("C-*" . mc/mark-all-like-this)))
 #+END_SRC
+
+
+* Counsel-Ag
+** Title
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+
+   \Huge Counsel-Ag
+
+** Screenshot
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+
+#+ATTR_LATEX: :width \textwidth :options page=1
+[[./source/counsel-ag_screenshot.png]]
+
+
+** What is it?
+
+- "Multiple cursors for emacs"
+- Repo: https://github.com/abo-abo/swiper#counsel
+- Video: ?
+- Purpose: Multi-file search via =ag= (silver searcher)
+
+** Example Workflow
+
+- =Meta-x counsel-ag= to call
+- =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
+- =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing the results
+- =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=) to save the changes
+
+
+** Configuration
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+   \tiny
+#+BEGIN_SRC elisp :eval no
+(use-package counsel
+  :commands (counsel-ag
+             counsel-git-grep)
+  :bind (("s-q". counsel-git-grep-at-point)
+         ("C-s-q" . counsel-ag)
+         :map org-mode-map
+         ("s-z" . counsel-org-goto))
+  ;;
+  :config
+  ;; Make counsel-ag default to
+  ;; https://github.com/abo-abo/swiper/issues/583
+  (defun counsel-ag-advice (args)
+    "Make counsel-ag aware of project root.
+
+Modify INITIAL-DIRECTORY to projectile-project-root."
+    ;; (setcar CELL NEWCAR)
+    (setcar (nthcdr 1 args) (projectile-project-root)))
+  ;; (advice-add 'counsel-ag :filter-args #'counsel-ag-advice)
+  ;; (advice-remove 'counsel-ag #'counsel-ag-advice)
+  ;;
+  ;; https://github.com/abo-abo/swiper/issues/66
+  (defun counsel-git-grep-at-point ()
+    (interactive)
+    (counsel-git-grep nil
+                      (selection-or-thing-at-point))))
+#+END_SRC
