@@ -217,3 +217,59 @@ searched. If there is no symbol, empty search box is started."
               (or (thing-at-point 'symbol)
                   "")))))
 #+END_SRC
+
+
+* Multiple-Cursor
+** Title
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+
+   \Huge Multiple-Cursor
+
+** Screenshot
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+
+#+ATTR_LATEX: :width \textwidth :options page=1
+[[./source/mc_screenshot.png]]
+
+
+** What is it?
+
+- "Multiple cursors for emacs"
+- Repo: https://github.com/magnars/multiple-cursors.el
+- Video: http://emacsrocks.com/e13.html
+- Purpose: Live editing multiple places simultaneously
+
+** Example Workflow
+
+- =Meta-x mc/mark-next-like-this= to add cursor to the next occurrence of the selected text
+- =Meta-x mc/mark-all-like-this= to add cursors to all the occurrences of the selected text
+
+
+- =Meta-x mc/mark-next-symbol-like-this= same but limited to symbols
+- =Meta-x mc/mark-all-symbol-like-this= same but limited to symbols
+
+
+- =Meta-x mc/insert-numbers= to insert consecutive numbers at cursors
+- =Meta-x mc/insert-letters= to insert consecutive alphabet characters at cursors
+
+
+** Configuration
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+   \tiny
+#+BEGIN_SRC elisp :eval no
+(use-package multiple-cursors
+  :bind (;; highlighting symbols only
+         ("C-M->" . mc/mark-next-symbol-like-this)
+         ("C-M-<" . mc/mark-previous-symbol-like-this)
+         ("C-M-*" . mc/mark-all-symbols-like-this)
+         ;; highlighting all
+         ("C->" . mc/mark-next-like-this)
+         ("C-<" . mc/mark-previous-like-this)
+         ("C-*" . mc/mark-all-like-this)))
+#+END_SRC
