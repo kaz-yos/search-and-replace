@@ -336,3 +336,17 @@ The directory is detected by projectile-project-root."
     (counsel-ag (selection-or-thing-at-point)
                 (projectile-project-root))))
 #+END_SRC
+
+
+* Summary
+** Summary: Current Buffer
+- =Meta-x swiper=
+- =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=)
+- =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=)
+- =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=)
+
+** Summary: Multiple Files
+- =Meta-x counsel-ag= or =Meta-x counsel-rg= or =Meta-x counsel-git-grep=
+- =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=)
+- =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=)
+- =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=)
