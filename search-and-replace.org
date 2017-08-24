@@ -38,7 +38,7 @@
 - Doctoral student at Harvard T.H. Chan School of Public Health (Epidemiology & Biostatistics).
 - emacs user since 2012.
 - Main use of emacs: =R= programming and \LaTeX.
-- Maintainer of [[https://github.com/kaz-yos/eval-in-repl][=eval-in-repl=]] and [[https://github.com/kaz-yos/reveal-in-osx-finder][=reveal-in-ox-finder=]] on [[https://melpa.org/#/][MELPA]].
+- Maintainer of [[https://github.com/kaz-yos/eval-in-repl][=eval-in-repl=]] and [[https://github.com/kaz-yos/reveal-in-osx-finder][=reveal-in-osx-finder=]] on [[https://melpa.org/#/][MELPA]].
 
 
 ** Packages Mentioned
@@ -49,7 +49,7 @@
 - wgrep: https://github.com/mhayashi1120/Emacs-wgrep
 
 
-** Demonstration environment
+** Demonstration Environment
 - MacBook Air (13-inch, Mid 2012)
 - macOS Sierra 10.12.6
 - emacs-plus 26.0.50
@@ -78,7 +78,7 @@
 [[./source/avy_screenshot.png]]
 
 
-** One-key searching jump cursor
+** What is it?
 
 - "Jump to things in Emacs tree-style"
 - Repo: https://github.com/abo-abo/avy
@@ -150,7 +150,19 @@
 [[./source/swiper_screenshot.png]]
 
 
-** Within-buffer search
+** What is it?
+
+- "Alternative to isearch that uses ivy to show an overview of all matches"
+- Repo: https://github.com/abo-abo/swiper#swiper
+- Video: https://www.youtube.com/watch?v=0mwwN0S1dnQ
+- Main function: =M-x swiper=
+- Purpose: Within-buffer searching
+
+** Workflow
+
+-
+
+
 ** Configuration
    :PROPERTIES:
    :BEAMER_ENV: fullframe
