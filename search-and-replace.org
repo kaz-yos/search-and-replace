@@ -85,11 +85,15 @@
 - "Jump to things in Emacs tree-style"
 - Repo: https://github.com/abo-abo/avy
 - Video: https://www.youtube.com/watch?v=ziytRbASKeU
-- Main function: =M-x avy-goto-char=
-- Rationale
-  - Using =isearch= (=C-s=) is a classic way to make cursor movements more efficient.
-  - =avy= makes jumping to anywhere visible easier.
+- Purpose: Move the cursor to anywhere visible by "searching".
 
+** Example Workflow
+
+- =Meta-x avy-goto-char= to invoke on a specified character (prompt)
+- =Meta-x avy-goto-word-1= to invoke on a specified character at the word beginning (prompt)
+- =Meta-x avy-goto-line= to invoke on all lines (no prompt)
+
+I personally use a hack for =avy-goto-char= to avoid the prompt asking for a character. For example, =Meta-super-a= invokes directly =(avy-goto-char ?a)= without having to enter =a= in the prompt.
 
 ** Configuration
    :PROPERTIES:
@@ -171,6 +175,9 @@
    :END:
    \tiny
 #+BEGIN_SRC elisp :eval no
+;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Recursive-Mini.html
+(setq enable-recursive-minibuffers)
+
 (use-package swiper
   :commands (swiper
              swiper-at-point)
