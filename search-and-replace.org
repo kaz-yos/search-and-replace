@@ -33,15 +33,17 @@
 # ############################################################################ #
 
 * Introduction
-** Who am I?
+** Who Am I?
 
 - Doctoral student at Harvard T.H. Chan School of Public Health (Epidemiology & Biostatistics).
 - emacs user since 2012.
 - Main use of emacs: =R= programming and \LaTeX.
 - Maintainer of [[https://github.com/kaz-yos/eval-in-repl][=eval-in-repl=]] and [[https://github.com/kaz-yos/reveal-in-osx-finder][=reveal-in-osx-finder=]] on [[https://melpa.org/#/][MELPA]].
+- Co-organizer of Boston Emacs Meetup since 2017.
 
 
 ** Packages Mentioned
+
 - avy: https://github.com/abo-abo/avy
 - swiper: https://github.com/abo-abo/swiper#swiper
 - multiple-cursor: https://github.com/magnars/multiple-cursors.el
