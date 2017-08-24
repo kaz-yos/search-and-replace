@@ -161,12 +161,17 @@ I personally use a hack for =avy-goto-char= to avoid the prompt asking for a cha
 - "Alternative to isearch that uses ivy to show an overview of all matches"
 - Repo: https://github.com/abo-abo/swiper#swiper
 - Video: https://www.youtube.com/watch?v=0mwwN0S1dnQ
-- Main function: =M-x swiper=
-- Purpose: Within-buffer searching
+- Purpose: Within-buffer searching for the current buffer
 
-** Workflow
+** Example Workflow
 
--
+- =Meta-x swiper= to start from an empty search string
+- =Meta-x swiper-from-isearch= to transition from =isearch= to =swiper=
+- =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a buffer of search results
+- =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing
+- =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=) to save the changes
+
+I defined an enhanced function =swiper-at-point=, which pick up the symbol at point or the selected region if available as the initial search term.
 
 
 ** Configuration
