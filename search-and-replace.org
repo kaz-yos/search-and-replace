@@ -296,10 +296,10 @@ searched. If there is no symbol, empty search box is started."
 
 - "Grep for a string in the current directory using ag"
 - Repo: https://github.com/abo-abo/swiper#counsel
-- Video: ?
-- Purpose: Multi-file search via =ag= (=brew install the_silver_searcher=)
+- Blog: https://sam217pa.github.io/2016/09/11/nuclear-power-editing-via-ivy-and-ag/
+- Purpose: Multi-file search via =ag= command (=brew install the_silver_searcher=) with optional editing.
 
-=counsel-git-grep= is very similar except that the back end is =git=, and it is project-folder-aware. =ag= in =ag.el= does not use the =ivy= interface, but also uses =ag= as the search backend.
+=counsel-rg= is essentially identical except for the use of =rg= command (=brew install ripgrep=). =counsel-git-grep= is very similar except that the back end is =git=, and it is project-folder-aware. =ag= in =ag.el= does not use the =ivy= live-filtering interface, but editing can work similarly.
 
 ** Example Workflow
 
