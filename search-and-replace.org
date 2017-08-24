@@ -45,7 +45,7 @@
 ** Packages Mentioned
 
 - avy: https://github.com/abo-abo/avy
-- swiper: https://github.com/abo-abo/swiper#swiper
+- swiper/counsel/ivy: https://github.com/abo-abo/swiper
 - multiple-cursor: https://github.com/magnars/multiple-cursors.el
 - ag: https://github.com/Wilfred/ag.el
 - wgrep: https://github.com/mhayashi1120/Emacs-wgrep
