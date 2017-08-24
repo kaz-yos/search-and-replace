@@ -3,7 +3,7 @@
 #+TITLE: Search and Replacement Techniques @@latex:\\@@ avy, swiper, multiple-cursor, ag, and wgrep
 #+AUTHOR:    Kazuki Yoshida
 #+EMAIL:
-#+DATE:
+#+DATE: September 18, 2017 (Boston Emacs Meetup)
 #+DESCRIPTION:
 #+KEYWORDS:
 #+OPTIONS: toc:nil
