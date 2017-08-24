@@ -299,6 +299,8 @@ searched. If there is no symbol, empty search box is started."
 - Video: ?
 - Purpose: Multi-file search via =ag= (=brew install the_silver_searcher=)
 
+=counsel-git-grep= is very similar except that the back end is =git=.
+
 ** Example Workflow
 
 - =Meta-x counsel-ag= to call with an empty string for the current directory
