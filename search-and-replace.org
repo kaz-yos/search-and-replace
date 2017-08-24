@@ -1,6 +1,6 @@
 * Meta-data :noexport:
 # http://orgmode.org/worg/exporters/beamer/tutorial.html
-#+TITLE: My Search and Replacement Strategies @@latex:\\@@ avy, swiper, multiple-cursor, ag, and wgrep
+#+TITLE: Search and Replacement Techniques @@latex:\\@@ avy, swiper, multiple-cursor, ag, and wgrep
 #+AUTHOR:    Kazuki Yoshida
 #+EMAIL:
 #+DATE:
