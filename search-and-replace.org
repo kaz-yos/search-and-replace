@@ -167,8 +167,8 @@ I personally use a hack for =avy-goto-char= to avoid the prompt asking for a cha
 
 - =Meta-x swiper= to start from an empty search string
 - =Meta-x swiper-from-isearch= to transition from =isearch= to =swiper=
-- =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a buffer of search results
-- =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing
+- =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
+- =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing the results
 - =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=) to save the changes
 
 I defined an enhanced function =swiper-at-point=, which pick up the symbol at point or the selected region if available as the initial search term.
@@ -181,7 +181,7 @@ I defined an enhanced function =swiper-at-point=, which pick up the symbol at po
    \tiny
 #+BEGIN_SRC elisp :eval no
 ;; https://www.gnu.org/software/emacs/manual/html_node/elisp/Recursive-Mini.html
-(setq enable-recursive-minibuffers)
+(setq enable-recursive-minibuffers t)
 
 (use-package swiper
   :commands (swiper
@@ -205,9 +205,13 @@ searched. If there is no symbol, empty search box is started."
 (defun selection-or-thing-at-point ()
   (cond
    ;; If there is selection use it
-   ((and transient-mark-mode mark-active
+   ((and transient-mark-mode
+         mark-active
          (not (eq (mark) (point))))
-    (buffer-substring-no-properties (mark) (point)))
+    (let ((mark-saved (mark))
+          (point-saved (point)))
+      (deactivate-mark)
+      (buffer-substring-no-properties mark-saved point-saved)))
    ;; Otherwise, use symbol at point or empty
    (t (format "%s"
               (or (thing-at-point 'symbol)
