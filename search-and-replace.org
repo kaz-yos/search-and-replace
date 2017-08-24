@@ -299,11 +299,11 @@ searched. If there is no symbol, empty search box is started."
 - Video: ?
 - Purpose: Multi-file search via =ag= (=brew install the_silver_searcher=)
 
-=counsel-git-grep= is very similar except that the back end is =git=, and it is project-folder-aware.
+=counsel-git-grep= is very similar except that the back end is =git=, and it is project-folder-aware. =ag= in =ag.el= does not use the =ivy= interface, but also uses =ag= as the search backend.
 
 ** Example Workflow
 
-- =Meta-x counsel-ag= to call with an empty string for the current directory. The universal argument (=Ctrl-u= before invocation) make it ask for the directory.
+- =Meta-x counsel-ag= to call with an empty string for the current directory. The universal argument (=Ctrl-u= before invocation) make it ask for the directory and command-line arguments.
 
 
 - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
