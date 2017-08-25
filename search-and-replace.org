@@ -50,6 +50,7 @@
 - ag: https://github.com/Wilfred/ag.el
 - rg: https://github.com/dajva/rg.el
 - wgrep: https://github.com/mhayashi1120/Emacs-wgrep
+- command-log-mode: https://github.com/lewang/command-log-mode
 
 
 ** Demonstration Environment
