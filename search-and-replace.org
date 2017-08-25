@@ -136,9 +136,9 @@ I personally use a hack for =avy-goto-char= to avoid the prompt asking for a cha
                    (t                  #'avy-goto-char))
                   ,c))))
   ;; Assing key bindings for all characters
-  ;; eg, M-s-x will activate (avy-goto-char ?x), ie, all occurrence of x
+  ;; eg, M-s-a will activate (avy-goto-char ?a), ie, all occurrence of a
   (loop for c from ?! to ?~ do (add-keys-to-avy "M-s-" c))
-  ;; eg, A-s-x will activate (avy-goto-word-1 ?x), ie, all words starting with x
+  ;; eg, C-M-s-a will activate (avy-goto-word-1 ?a), ie, all words starting with a
   (loop for c from ?! to ?~ do (add-keys-to-avy "C-M-s-" c 'word)))
 #+END_SRC
 
@@ -172,6 +172,7 @@ I personally use a hack for =avy-goto-char= to avoid the prompt asking for a cha
 
 - =Meta-x swiper= to start from an empty search string
 - =Meta-x swiper-from-isearch= to transition from =isearch= to =swiper=
+- =Meta-x ivy-avy= (=Ctrl-'=) to use =avy= to choose
 - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
 - =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing the results
 - =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=) to save the changes
@@ -311,6 +312,7 @@ searched. If there is no symbol, empty search box is started."
 - =Meta-x counsel-ag= to call with an empty string for the current directory. The universal argument (=Ctrl-u= before invocation) make it ask for the directory and command-line arguments.
 
 
+- =Meta-x ivy-avy= (=Ctrl-'=) to use =avy= to choose
 - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
 - =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing the results
 - Edit using =multiple-cursor=
