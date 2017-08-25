@@ -91,8 +91,10 @@
 ** Example Workflow
 
 - =Meta-x avy-goto-char= to invoke on a specified character (prompt)
+- =Meta-x avy-goto-char-timer= to invoke after multiple characters (prompt)
 - =Meta-x avy-goto-word-1= to invoke on a specified character at the word beginning (prompt)
 - =Meta-x avy-goto-line= to invoke on all lines (no prompt)
+- =Meta-x avy-isearch= (=Ctrl-'=) to transition from isearch to avy (no prompt)
 
 I personally use a hack for =avy-goto-char= to avoid the prompt asking for a character. For example, =Meta-super-a= invokes directly =(avy-goto-char ?a)= without having to enter =a= in the prompt.
 
@@ -105,6 +107,8 @@ I personally use a hack for =avy-goto-char= to avoid the prompt asking for a cha
 #+BEGIN_SRC elisp :eval no
 (use-package avy
   :demand
+  :bind (:map isearch-mode-map
+         ("C-'" . avy-isearch))
   :config
   ;; Darken background.
   (setq avy-background t)
