@@ -395,6 +395,14 @@ I defined an enhanced function =counsel-ag-at-point=, which pick up the symbol a
   :bind (("s-q". counsel-ag-at-point)
          ("C-s-q" . counsel-ag))
   :config
+  ;; Use this filter advice to always use ag at the project root.
+  (defun counsel-ag-arg2-to-project-root (args)
+    `(,(car args)
+      ,(projectile-project-root)
+      ,@(cddr args)))
+  ;; (advice-add #'counsel-ag :filter-args #'counsel-ag-arg2-to-project-root)
+  ;; (advice-remove #'counsel-ag #'counsel-ag-arg2-to-project-root)
+  ;;
   (defun counsel-ag-at-point ()
     (interactive)
     (counsel-ag (selection-or-thing-at-point)
