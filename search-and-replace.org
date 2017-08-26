@@ -226,6 +226,68 @@ searched. If there is no symbol, empty search box is started."
 #+END_SRC
 
 
+* Swiper-Helm
+** Title
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+\Huge Swiper-Helm
+
+
+** Screenshot
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+
+#+ATTR_LATEX: :height \textheight :options page=1
+[[./source/swiper-helm_screenshot.png]]
+
+
+** What is it?
+
+- "Helm version of swiper"
+- Repo: https://github.com/abo-abo/swiper-helm
+- Purpose: Within-buffer searching for the current buffer
+
+
+** Example Workflow
+
+- =Meta-x swiper-helm= to start from an empty search string
+- =Meta-x swiper-helm-from-isearch= to transition from =isearch= to =swiper=
+- =Ctrl-'= to use =avy= to choose (in =ace-jump-helm-line= package)
+# - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
+# - =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing the results
+# - =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=) to save the changes
+
+I defined an enhanced function =swiper-helm-at-point=, which pick up the symbol at point or the selected region if available as the initial search term.
+
+
+** Configuration
+   :PROPERTIES:
+   :BEAMER_ENV: fullframe
+   :END:
+   \tiny
+#+BEGIN_SRC elisp :eval no
+;; https://github.com/abo-abo/swiper-helm
+(use-package swiper-helm
+  :commands (swiper-helm
+             swiper-helm-from-isearch)
+  :bind (("s-s" . swiper-helm-at-point)
+         ("C-s-s" . swiper-helm)
+         :map isearch-mode-map
+         ("s-s" . swiper-helm-from-isearch))
+  :config
+  (defun swiper-helm-at-point ()
+    "Custom function to pick up a thing at a point for swiper-helm
+
+If a selected region exists, it will be searched for by swiper-helm
+If there is a symbol at the current point, its textual representation is
+searched. If there is no symbol, empty search box is started."
+    (interactive)
+    (swiper-helm (selection-or-thing-at-point))))
+#+END_SRC
+
+
 * Multiple-Cursor
 ** Title
    :PROPERTIES:
