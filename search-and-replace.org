@@ -255,9 +255,7 @@ searched. If there is no symbol, empty search box is started."
 - =Meta-x swiper-helm= to start from an empty search string
 - =Meta-x swiper-helm-from-isearch= to transition from =isearch= to =swiper=
 - =Ctrl-'= to use =avy= to choose (in =ace-jump-helm-line= package)
-# - =Meta-x ivy-occur= (=Ctrl-c Ctrl-o=) to create a dedicated buffer of the search results
-# - =Meta-x ivy-wgrep-change-to-wgrep-mode= (=Ctrl-x Ctrl-q=) to start editing the results
-# - =Meta-x wgrep-finish-edit= (=Ctrl-c Ctrl-c=) to save the changes
+- I couldn't find editing capability.
 
 I defined an enhanced function =swiper-helm-at-point=, which pick up the symbol at point or the selected region if available as the initial search term.
 
