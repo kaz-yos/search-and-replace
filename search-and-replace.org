@@ -226,7 +226,7 @@ searched. If there is no symbol, empty search box is started."
 #+END_SRC
 
 
-* Swiper-Helm
+* Swiper-Helm                                                      :noexport:
 ** Title
    :PROPERTIES:
    :BEAMER_ENV: fullframe
