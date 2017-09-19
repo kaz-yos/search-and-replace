@@ -6,7 +6,6 @@
 .tramp_history
 *.RData
 *.pdf
-*.png
 *.doc*
 *.ppt*
 *.xls*
@@ -27,5 +26,4 @@ auto/
 figure/
 cache/
 *SugarSyncTemp
-
 *.tex
